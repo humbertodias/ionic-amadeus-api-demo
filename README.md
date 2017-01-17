@@ -1,6 +1,6 @@
 # Demo Amadeus API
 
-Demo Ionic For Amadeus API
+	Demo Ionic For Amadeus API
 
 ## Demo
 
