@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-
+import { ModalVoosOrigemService } from '../modal-voos-origem/modal-voos-origem-service';
 import { ModalController, Platform, NavParams, ViewController } from 'ionic-angular';
 
 /*
@@ -23,18 +23,23 @@ export class ModalVoosDestinoComponent {
 
     public platform: Platform,
     public params: NavParams,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    private mvoS: ModalVoosOrigemService
 
   ) {
     console.log('Hello ModalVoosDestino Component');
+    this.mvoS.getAirportsWeb().subscribe((res) => {
+      this.items = res.json();
+      console.log('ModalVoosDestino', this.items)
+    });
 
   }
 
 initializeItems() {
-      this.items = [
-        {'label':'Amsterdam','value':'AMS'},
-        {'label':'Guarulhos','value':'GRU'}
-      ];
+      // this.items = [
+      //   {'label':'Amsterdam','value':'AMS'},
+      //   {'label':'Guarulhos','value':'GRU'}
+      // ];
   }
 
   getItems(ev: any) {
@@ -47,7 +52,7 @@ initializeItems() {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
-        return (item.label.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return ( (item.name || '').toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
