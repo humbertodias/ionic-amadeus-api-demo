@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 import { ModalController, Platform, NavParams, ViewController } from 'ionic-angular';
+import { ModalVoosOrigemService } from './modal-voos-origem-service';
 
 /*
   Generated class for the ModalVoosOrigem component.
@@ -15,26 +16,30 @@ import { ModalController, Platform, NavParams, ViewController } from 'ionic-angu
 })
 export class ModalVoosOrigemComponent {
 
- searchQuery: string = '';
+  searchQuery: string = '';
 
- items:any[];
+  items: any[];
 
-  
+
   constructor(
 
     public platform: Platform,
     public params: NavParams,
-    public viewCtrl: ViewController
-
+    public viewCtrl: ViewController,
+    private mvoS: ModalVoosOrigemService
   ) {
     console.log('Hello ModalVoosOrigem Component');
+    // console.log(this.mvoS.getAirports());
+    this.mvoS.getAirportsWeb().subscribe((res) => {
+      this.items = res.json();
+    });
   }
 
   initializeItems() {
-      this.items = [
-        {'label':'Amsterdam','value':'AMS'},
-        {'label':'Guarulhos','value':'GRU'}
-      ];
+    // this.items = [
+    //   {'name':'Amsterdam','value':'AMS'},
+    //   {'name':'Guarulhos','value':'GRU'}
+    // ];
   }
 
   getItems(ev: any) {
@@ -47,7 +52,7 @@ export class ModalVoosOrigemComponent {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
-        return (item.label.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return ( (item.name || '').toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }

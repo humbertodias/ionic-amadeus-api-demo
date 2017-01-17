@@ -36,8 +36,8 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col width-50 (click)='escolheOrigem()'><h2>{{origem?.label}}</h2><p>{{origem?.value}}</p></ion-col>
-      <ion-col width-50 (click)='escolheDestino()'><h2>{{destino?.label}}</h2><p>{{destino?.value}}</p></ion-col>
+      <ion-col width-50 (click)='escolheOrigem()'><h2>{{origem?.name}}</h2><p>{{origem?.iata}}</p></ion-col>
+      <ion-col width-50 (click)='escolheDestino()'><h2>{{destino?.name}}</h2><p>{{destino?.iata}}</p></ion-col>
     </ion-row>
   </ion-grid>
 

@@ -13,6 +13,8 @@ import { HoteisFormComponent } from '../components/hoteis-form/hoteis-form';
 import { ModalVoosOrigemComponent } from '../components/modal-voos-origem/modal-voos-origem';
 import { ModalVoosDestinoComponent } from '../components/modal-voos-destino/modal-voos-destino';
 
+import { ModalVoosOrigemService } from '../components/modal-voos-origem/modal-voos-origem-service';
+
 
 @NgModule({
   declarations: [
@@ -47,6 +49,6 @@ import { ModalVoosDestinoComponent } from '../components/modal-voos-destino/moda
     ModalVoosDestinoComponent  
 
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, ModalVoosOrigemService]
 })
 export class AppModule {}

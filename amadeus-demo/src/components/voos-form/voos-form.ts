@@ -23,8 +23,8 @@ export class VoosFormComponent {
   // default tab
   voo='ida-volta';
 
-  origem={'label':'Origem', 'value':''};
-  destino={'label':'Destino', 'value':''};
+  origem={'name':'Origem', 'iata':''};
+  destino={'name':'Destino', 'iata':''};
 
 
   dataPartida;
