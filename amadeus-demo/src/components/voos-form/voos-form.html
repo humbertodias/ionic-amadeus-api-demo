@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Voos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<div padding>
+  <ion-segment [(ngModel)]="voo">
+    <ion-segment-button value="ida-volta">
+      Ida e volta
+    </ion-segment-button>
+    <ion-segment-button value="ida">
+      Somente ida
+    </ion-segment-button>
+    <ion-segment-button value="varias">
+      Varias paradas
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+
+<div [ngSwitch]="voo">
+  <ion-list *ngSwitchCase="'ida-volta'">
+    <!--<ion-item>
+      <ion-thumbnail item-left>
+        <img src="img/thumbnail-puppy-1.jpg">
+      </ion-thumbnail>
+      <h2>Ruby</h2>
+    </ion-item>-->
+
+
+
+<ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col width-50 (click)='escolheOrigem()'><h2>{{origem?.label}}</h2><p>{{origem?.value}}</p></ion-col>
+      <ion-col width-50 (click)='escolheDestino()'><h2>{{destino?.label}}</h2><p>{{destino?.value}}</p></ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-item>
+
+<ion-item>
+  
+  <ion-label>Data de partida</ion-label>
+  <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="dataPartida"></ion-datetime>
+
+</ion-item>
+
+
+<ion-item>
+  
+  <ion-label>Data de volta</ion-label>
+  <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="dataVolta"></ion-datetime>
+
+</ion-item>
+
+
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'kittens'">
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="img/thumbnail-kitten-1.jpg">
+      </ion-thumbnail>
+      <h2>Luna</h2>
+    </ion-item>
+    ...
+  </ion-list>
+</div>
+
+
+
+<!--<div padding>
+  <ion-segment [(ngModel)]="pet">
+    <ion-segment-button value="kittens">
+      Kittens
+    </ion-segment-button>
+    <ion-segment-button value="puppies">
+      Puppies
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+<div [ngSwitch]="pet">
+  <ion-list *ngSwitchCase="'puppies'">
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="img/thumbnail-puppy-1.jpg">
+      </ion-thumbnail>
+      <h2>Ruby</h2>
+    </ion-item>
+    ...
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'kittens'">
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="img/thumbnail-kitten-1.jpg">
+      </ion-thumbnail>
+      <h2>Luna</h2>
+    </ion-item>
+    ...
+  </ion-list>
+</div>-->
+
+
+<button ion-button block>Pesquisar Voos</button>
+
+</ion-content>
