@@ -29,7 +29,8 @@ export class ModalVoosOrigemComponent {
     private mvoS: ModalVoosOrigemService
   ) {
     console.log('Hello ModalVoosOrigem Component');
-    // console.log(this.mvoS.getAirports());
+
+    if(!this.items)
     this.mvoS.getAirportsWeb().subscribe((res) => {
       this.items = res.json();
     });

@@ -28,10 +28,10 @@ export class ModalVoosDestinoComponent {
 
   ) {
     console.log('Hello ModalVoosDestino Component');
-    this.mvoS.getAirportsWeb().subscribe((res) => {
-      this.items = res.json();
-      console.log('ModalVoosDestino', this.items)
-    });
+    if(!this.items)
+      this.mvoS.getAirportsWeb().subscribe((res) => {
+        this.items = res.json();
+      });
 
   }
 
