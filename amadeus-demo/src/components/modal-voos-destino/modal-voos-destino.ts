@@ -15,50 +15,58 @@ import { ModalController, Platform, NavParams, ViewController } from 'ionic-angu
 })
 export class ModalVoosDestinoComponent {
 
- searchQuery: string = '';
+  searchQuery: string = '';
 
- items:any[];
+  items: any[];
+  itemsAll: any[];
+  results: any[] = [];
 
   constructor(
 
     public platform: Platform,
     public params: NavParams,
-    public viewCtrl: ViewController,
-    private mvoS: ModalVoosOrigemService
-
+    public viewCtrl: ViewController
   ) {
-    console.log('Hello ModalVoosDestino Component');
-    if(!this.items)
-      this.mvoS.getAirportsWeb().subscribe((res) => {
-        this.items = res.json();
-      });
+    // console.log('Hello ModalVoosOrigem Component');
 
+    this.itemsAll = (<any>window).airports;
+    this.items = this.itemsAll;
+    // this.mvoS.getAirportsWeb().subscribe((res) => {
+    //   this.items = res.json();
+    // });
   }
 
-initializeItems() {
-      // this.items = [
-      //   {'label':'Amsterdam','value':'AMS'},
-      //   {'label':'Guarulhos','value':'GRU'}
-      // ];
+  initializeItems() {
+    this.items = this.itemsAll;
   }
 
   getItems(ev: any) {
     // Reset items back to all of the items
-    this.initializeItems();
+    // console.log("getItems");
+    // this.initializeItems();
 
     // set val to the value of the searchbar
     let val = ev.target.value;
 
     // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
+    if (val && val.trim() != '' && val.length >= 3) {
       this.items = this.items.filter((item) => {
-        return ( (item.name || '').toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return ((item.name || '').toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
+  getResults(ev: any) {
+    let val = ev.target.value;
+    if (val && val.trim() != "" && val.length >= 2) {
+      this.results = this.itemsAll.filter((item) => {
+        return ((item.name || '').toLowerCase().indexOf(val.toLowerCase()) > -1);
+      });
+    } else {
+      this.results = [];
+    }
 
+  }
   dismiss(args) {
     this.viewCtrl.dismiss(args);
   }
-
 }
