@@ -4,34 +4,27 @@ import { Injectable } from "@angular/core";
 
 @Injectable()
 export class ModalVoosOrigemService {
+    prom;
+    tmp;
     constructor(private http: Http) {
-
+        console.log("getAirportsWeb Constructor");
+        this.prom = this.http.get('assets/airports.json');
+        var x;
+        this.http.get('assets/airports.json').subscribe((res) => {
+            x = res.json()
+        });
+        this.tmp = x;
     }
     getAirportsWeb() {
-        return this.http.get('assets/airports.json');
+
+        // return this.http.get('assets/airports.json');
+        // console.log(this.getAirports());
+        // return this.prom;
+        return (<any>window).airports;
+        // return (<any>window).airplanes || {};
         // return this.http.get('https://raw.githubusercontent.com/jbrooksuk/JSON-Airports/master/airports.json');
     }
     getAirports() {
-        return [
-            {
-                "iata": "UTK",
-                "lon": "169.86667",
-                "iso": "MH",
-                "status": 1,
-                "name": "Utirik Airport",
-                "continent": "OC",
-                "type": "airport",
-                "lat": "11.233333",
-                "size": "small"
-            },
-            {
-                "iata": "FIV",
-                "iso": "US",
-                "status": 1,
-                "name": "Five Finger CG Heliport",
-                "continent": "NA",
-                "type": "heliport",
-                "size": null
-            }];
+        return (<any>window).airports;
     }
 }

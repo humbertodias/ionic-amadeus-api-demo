@@ -19,6 +19,7 @@ export class ModalVoosOrigemComponent {
   searchQuery: string = '';
 
   items: any[];
+  itemsAll: any[];
 
 
   constructor(
@@ -30,17 +31,15 @@ export class ModalVoosOrigemComponent {
   ) {
     console.log('Hello ModalVoosOrigem Component');
 
-    if(!this.items)
-    this.mvoS.getAirportsWeb().subscribe((res) => {
-      this.items = res.json();
-    });
+    this.itemsAll = this.mvoS.getAirportsWeb();
+    this.items = this.itemsAll;
+    // this.mvoS.getAirportsWeb().subscribe((res) => {
+    //   this.items = res.json();
+    // });
   }
 
   initializeItems() {
-    // this.items = [
-    //   {'name':'Amsterdam','value':'AMS'},
-    //   {'name':'Guarulhos','value':'GRU'}
-    // ];
+    this.items = this.itemsAll;
   }
 
   getItems(ev: any) {
@@ -53,7 +52,7 @@ export class ModalVoosOrigemComponent {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
-        return ( (item.name || '').toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return ((item.name || '').toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
