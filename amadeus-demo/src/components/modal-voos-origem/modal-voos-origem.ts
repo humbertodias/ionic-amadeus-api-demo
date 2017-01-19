@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ModalController, Platform, NavParams, ViewController } from 'ionic-angular';
 import { ModalVoosOrigemService } from './modal-voos-origem-service';
-
+import removeAccents from 'remove-accents';
 /*
   Generated class for the ModalVoosOrigem component.
 
@@ -58,10 +58,15 @@ export class ModalVoosOrigemComponent {
     }
   }
   getResults(ev: any) {
-    let val = ev.target.value;
+    let val = removeAccents(ev.target.value);
+    // console.log(removeAccents);
+    // val = removeAccents(val);
+    console.log(val);
     if (val && val.trim() != "" && val.length >= 2) {
       this.results = this.itemsAll.filter((item) => {
-        return ((item.name || '').toLowerCase().indexOf(val.toLowerCase()) > -1);
+        let tmpName = item.name || '';
+        // tmpName = removeAccents(tmpName);
+        return ((tmpName || '').toLowerCase().indexOf(val.toLowerCase()) > -1);
       });
     } else {
       this.results = [];

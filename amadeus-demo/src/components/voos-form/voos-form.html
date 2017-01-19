@@ -4,79 +4,90 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
-<div padding>
-  <ion-segment [(ngModel)]="voo">
-    <ion-segment-button value="ida-volta">
-      Ida e volta
-    </ion-segment-button>
-    <ion-segment-button value="ida">
-      Somente ida
-    </ion-segment-button>
-    <ion-segment-button value="varias">
-      Varias paradas
-    </ion-segment-button>
-  </ion-segment>
-</div>
+  <div>
+    <ion-segment [(ngModel)]="voo">
+      <ion-segment-button value="ida-volta">
+        Ida e volta
+      </ion-segment-button>
+      <ion-segment-button value="ida">
+        Somente ida
+      </ion-segment-button>
+      <ion-segment-button value="varias">
+        Varias paradas
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
 
-<div [ngSwitch]="voo">
-  <ion-list *ngSwitchCase="'ida-volta'">
-    <!--<ion-item>
+  <div [ngSwitch]="voo">
+    <ion-list *ngSwitchCase="'ida-volta'">
+      <!--<ion-item>
       <ion-thumbnail item-left>
         <img src="img/thumbnail-puppy-1.jpg">
       </ion-thumbnail>
       <h2>Ruby</h2>
     </ion-item>-->
+      <!--<ion-item>-->
+
+        <ion-grid>
+          <ion-row>
+            <ion-col center width-48 offset-2 (click)='escolheOrigem()' style="text-align: center">
+              <h5>{{origem?.name}}</h5>
+              <p>
+                <small>
+                  {{origem?.iata}}
+                </small>
+              </p>
+            </ion-col>
+            <ion-col center width-48 (click)='escolheDestino()' style="text-align: center">
+              <h5>{{destino?.name}}</h5>
+              <p>
+                <small>
+                  {{destino?.iata}}
+                </small>
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
 
 
 
-<ion-item>
+      <!--</ion-item>-->
 
-  <ion-grid>
-    <ion-row>
-      <ion-col width-50 (click)='escolheOrigem()'><h2>{{origem?.name}}</h2><p>{{origem?.iata}}</p></ion-col>
-      <ion-col width-50 (click)='escolheDestino()'><h2>{{destino?.name}}</h2><p>{{destino?.iata}}</p></ion-col>
-    </ion-row>
-  </ion-grid>
+      <ion-item>
 
+        <ion-label>Data de partida</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="dataPartida"></ion-datetime>
 
-
-</ion-item>
-
-<ion-item>
-  
-  <ion-label>Data de partida</ion-label>
-  <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="dataPartida"></ion-datetime>
-
-</ion-item>
+      </ion-item>
 
 
-<ion-item>
-  
-  <ion-label>Data de volta</ion-label>
-  <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="dataVolta"></ion-datetime>
+      <ion-item>
 
-</ion-item>
+        <ion-label>Data de volta</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="dataVolta"></ion-datetime>
+
+      </ion-item>
 
 
-  </ion-list>
+    </ion-list>
 
-  <ion-list *ngSwitchCase="'kittens'">
-    <ion-item>
-      <ion-thumbnail item-left>
-        <img src="img/thumbnail-kitten-1.jpg">
-      </ion-thumbnail>
-      <h2>Luna</h2>
-    </ion-item>
-    ...
-  </ion-list>
-</div>
+    <ion-list *ngSwitchCase="'kittens'">
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>
+        <h2>Luna</h2>
+      </ion-item>
+      ...
+    </ion-list>
+  </div>
 
 
 
-<!--<div padding>
+  <!--<div padding>
   <ion-segment [(ngModel)]="pet">
     <ion-segment-button value="kittens">
       Kittens
@@ -110,6 +121,6 @@
 </div>-->
 
 
-<button ion-button block>Pesquisar Voos</button>
+  <button ion-button block>Pesquisar Voos</button>
 
 </ion-content>
