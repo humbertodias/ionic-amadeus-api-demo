@@ -7,13 +7,13 @@ export class ModalVoosOrigemService {
     prom;
     tmp;
     constructor(private http: Http) {
-        console.log("getAirportsWeb Constructor");
-        this.prom = this.http.get('assets/airports.json');
-        var x;
-        this.http.get('assets/airports.json').subscribe((res) => {
-            x = res.json()
-        });
-        this.tmp = x;
+        // console.log("getAirportsWeb Constructor");
+        // this.prom = this.http.get('assets/airports.json');
+        // var x;
+        // this.http.get('assets/airports.json').subscribe((res) => {
+        //     x = res.json()
+        // });
+        // this.tmp = x;
     }
     getAirportsWeb() {
 

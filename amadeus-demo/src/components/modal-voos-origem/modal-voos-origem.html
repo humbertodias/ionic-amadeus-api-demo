@@ -1,9 +1,10 @@
 <ion-header>
   <ion-toolbar>
- 
-    <ion-searchbar start placeholder="Digite a cidade de origem" (ionInput)="getItems($event)"></ion-searchbar>
 
-   <ion-buttons end>
+    <ion-searchbar animated="on" autocomplete="on" showCancelButton="true" debounce="400" start placeholder="Digite a cidade de origem"
+      (ionInput)="getResults($event)"></ion-searchbar>
+
+    <ion-buttons end>
       <button ion-button (click)="dismiss()">
         <span ion-text color="primary">Cancel</span>
       </button>
@@ -16,10 +17,14 @@
 
 <ion-content>
 
-<ion-list>
-  <ion-item *ngFor="let item of items" (click)="dismiss(item)">
-    {{ item.name }}
-  </ion-item>
-</ion-list>
+  <ion-list>
+    <ion-item *ngFor="let item of results" (click)="dismiss(item)">
+      {{ item.name }}
+    </ion-item>
+    <ion-item *ngIf="results.length < 1">
+      Nenhum item encontrado
+    </ion-item>
+  </ion-list>
+
 
 </ion-content>

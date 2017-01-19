@@ -20,7 +20,7 @@ export class ModalVoosOrigemComponent {
 
   items: any[];
   itemsAll: any[];
-
+  results: any[] = [];
 
   constructor(
 
@@ -44,19 +44,30 @@ export class ModalVoosOrigemComponent {
 
   getItems(ev: any) {
     // Reset items back to all of the items
+    console.log("getItems");
     this.initializeItems();
 
     // set val to the value of the searchbar
     let val = ev.target.value;
 
     // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
+    if (val && val.trim() != '' && val.length >= 3) {
       this.items = this.items.filter((item) => {
         return ((item.name || '').toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
+  getResults(ev: any) {
+    let val = ev.target.value;
+    if (val && val.trim() != "" && val.length >= 2) {
+      this.results = this.itemsAll.filter((item) => {
+        return ((item.name || '').toLowerCase().indexOf(val.toLowerCase()) > -1);
+      });
+    } else {
+      this.results = [];
+    }
 
+  }
   dismiss(args) {
     this.viewCtrl.dismiss(args);
   }
