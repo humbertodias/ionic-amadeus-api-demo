@@ -13,7 +13,7 @@ git clone https://github.com/humbertodias/java-amadeus-api-demo.git
 Enter
 
 ```
-cd amadeus-demo
+cd java-amadeus-api-demo
 ```
 
 Start
