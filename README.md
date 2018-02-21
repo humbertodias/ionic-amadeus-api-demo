@@ -39,7 +39,7 @@ Form Flight
 ### Flight Inspiration Search
 
 ```
-curl -X GET "https://api.sandbox.amadeus.com/v1.2/flights/inspiration-search?apikey=WGJ5qAqZX1WzUlCNi95HnQiluKryMITS&origin=NYC&destination=BOB&departure_date=2017-02-28"
+curl -k -X GET "https://api.sandbox.amadeus.com/v1.2/flights/inspiration-search?apikey=6A2TaSekY3SSZCirCEARLBQHjfXwZukq&origin=NYC&destination=BOB&departure_date=2018-02-28"
 ```
 
 
@@ -51,10 +51,10 @@ curl -X GET "https://api.sandbox.amadeus.com/v1.2/flights/inspiration-search?api
   "currency" : "USD",
   "results" : [ {
     "destination" : "BOB",
-    "departure_date" : "2017-02-28",
-    "return_date" : "2017-03-01",
-    "price" : "1694.10",
-    "airline" : "VX"
+    "departure_date" : "2018-02-28",
+    "return_date" : "2018-03-14",
+    "price" : "2203.80",
+    "airline" : "QF"
   } ]
 }
 ```
