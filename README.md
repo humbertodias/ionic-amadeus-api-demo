@@ -39,8 +39,11 @@ Form Flight
 ### Flight Inspiration Search
 
 ```
-APIKEY=6A2TaSekY3SSZCirCEARLBQHjfXwZukq
-curl -k -X GET "https://api.sandbox.amadeus.com/v1.2/flights/inspiration-search?apikey=$APKKEY&origin=NYC&destination=BOB&departure_date=2018-02-28"
+APIKEY="6A2TaSekY3SSZCirCEARLBQHjfXwZukq"
+DEPARTURE_DATE=$(date "+%Y-%m-%d")
+ORIGIN="NYC"
+DESTINATION="BOB"
+curl -k -X GET "https://api.sandbox.amadeus.com/v1.2/flights/inspiration-search?apikey=$APIKEY&origin=$ORIGIN&destination=$DESTINATION&departure_date=$DEPARTURE_DATE"
 ```
 
 
