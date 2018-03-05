@@ -39,7 +39,7 @@ Form Flight
 ### Flight Inspiration Search
 
 ```
-APIKEY="6A2TaSekY3SSZCirCEARLBQHjfXwZukq"
+APIKEY="YOUR_API_KEY"
 DEPARTURE_DATE=$(date "+%Y-%m-%d")
 ORIGIN="NYC"
 DESTINATION="BOB"
